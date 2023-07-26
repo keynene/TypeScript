@@ -70,3 +70,31 @@ function 태욱이는결혼가능할까 (money :number, house :boolean, charm :s
   }
 }
 
+/** 4. Type, Interface */
+
+//type
+type personType = {
+  name :string,
+  age :number
+}
+
+//type확장
+type extendPersonType = personType & {
+  nickname :string
+}
+
+//interface
+interface personInterface {
+  name :string, 
+  age :number,
+}
+
+//interface확장1 :: 재선언 (자동확장)
+interface personInterface {
+  nickname :string,
+}
+
+//interface확장2 :: extend
+interface extendPersonInterface extend personInterface {
+  email :string
+}

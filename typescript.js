@@ -57,3 +57,8 @@ function 태욱이는결혼가능할까(money, house, charm) {
         return '결혼가능';
     }
 }
+extend;
+personInterface;
+{
+    email: string;
+}
