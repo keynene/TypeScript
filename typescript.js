@@ -110,16 +110,29 @@
 //   let array :number[] = [];
 //   array[0] = x as number;  //왼쪽에 잇는 변수를 as 이후 타입으로 덮어씀
 // }
-function narrow1(arr) {
-    let ans = [];
-    arr.forEach((x) => {
-        if (typeof x === 'string') {
-            ans.push(parseInt(x));
-        }
-        else {
-            ans.push(x);
-        }
-    });
+// function narrow1 (arr :(number|string)[]){
+//   let ans :number[] = [];
+//   arr.forEach((x)=>{
+//     if (typeof x === 'string'){
+//       ans.push(parseInt(x))
+//     } else {
+//       ans.push(x)
+//     }
+//   })
+//   return ans
+// }
+// console.log(narrow1([123, '3']))
+function narrow2(obj) {
+    let ans;
+    if (typeof obj.subject === 'string') {
+        ans = obj.subject;
+    }
+    else {
+        obj.subject.forEach((x) => {
+            ans = x;
+        });
+    }
     return ans;
 }
-console.log(homework1([123, '3']));
+console.log(narrow2({ subject: 'math' })); //이 경우 'math'를 return
+console.log(narrow2({ subject: ['science', 'art', 'korean'] })); //이 경우 'korean'을 return
