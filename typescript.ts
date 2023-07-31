@@ -198,22 +198,88 @@
 
 
 /** Literal Types로 만드는 const 변수 유사품 */
-let 장또니 :'대머리'|'못생김'
+// const 장또니 :'대머리'|'못생김'
 
-function 또니(a :'키작음') :'노이가아까움' {
-  return '노이가아까움'
+// function 또니(a :'키작음') :'노이가아까움' {
+//   return '노이가아까움'
+// }
+
+// function literal(x :'가위'|'바위'|'보') :('가위'|'바위'|'보')[]{
+//   return ['가위']
+// }
+
+// var 자료 = {
+//   name : 'kim'
+// } as const // as const를 붙여줘야 자료 object 안의 타입들이 다 잠김 
+
+// function 함수 (x :'kim'){
+
+// }
+// 함수(자료.kim) //에러남 : 자료의 name의 타입이 'kim'이 아니라 'string'이기 때문
+// // 내생각엔 자료라는 object 안의 name의 값이 얼마든지 바뀔 수 있어서 그런 것 같음
+
+
+
+
+
+/** 함수와 methods에 type alias 지정하는 법 */
+// type 함수타입 = (a :string) => number //함수 타입지정하려면 arrow function 써야함
+
+// //함수표현식
+// let 함수 :함수타입 = () => {}
+
+// //함수선언식
+// function 함수() {} // 함수선언식은 함수타입 따로 지정 불가능
+
+//숙제1
+// type Member = {
+//   name : string,
+//   age : 30,
+//   plusOne : (x :number) => number,
+//   changeName : () => void,
+// }
+
+// let 회원정보2 :Member = {
+//   name : 'kim',
+//   age : 30,
+//   plusOne (x){
+//     return x + 1
+//   },
+//   changeName : () => {
+//     console.log('안녕')
+//   }
+// }
+// 회원정보2.plusOne(1);
+// 회원정보2.changeName();
+
+//숙제2
+type cutType = (x :string) => string
+let cutZero :cutType = (x) => {
+  let ans :string;
+  let test :string = x.slice(0,1)
+  if (test === '0'){
+    ans = x.slice(1,(x.length-1))
+  } else {
+    ans = x
+  }
+  return ans
+}
+console.log(cutZero('101234'))
+
+type removeType = (x :string) => number
+let removeDash :removeType = (x) => {
+  let ans :number = x.replace(/-/g,'')
+  return ans
+}
+console.log(removeDash('010-1234-5678'))
+
+//숙제3
+type funcType1 = (x :string) => string;
+type funcType2 = (x :string) => number;
+
+function call(x :string, func1 :funcType1, func2 :funcType2){
+  console.log(func2(func1(x)))
 }
 
-function literal(x :'가위'|'바위'|'보') :('가위'|'바위'|'보')[]{
-  return ['가위']
-}
 
-var 자료 = {
-  name : 'kim'
-} as const // as const를 붙여줘야 자료 object 안의 타입들이 다 잠김 
-
-function 함수 (x :'kim'){
-
-}
-함수(자료.kim) //에러남 : 자료의 name의 타입이 'kim'이 아니라 'string'이기 때문
-// 내생각엔 자료라는 object 안의 name의 값이 얼마든지 바뀔 수 있어서 그런 것 같음
+call('010-1111-2222', cutZero, removeDash)
