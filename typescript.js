@@ -29,7 +29,7 @@
 // }
 // 학교.score[4] = false;
 // 학교.friend = ['Lee' , 학교.teacher]
-// /** 3. Function */
+// /** 함수에 타입 지정하는 법 & void 타입 */
 // function 함수 (x :number) :number {
 //   return x * 2
 // }
@@ -60,7 +60,7 @@
 //     return '결혼가능'
 //   }
 // }
-// /** 4. Type, Interface */
+// /** Type, Interface */
 // //type
 // type personType = {
 //   name :string,
@@ -83,7 +83,7 @@
 // interface extendPersonInterface extend personInterface {
 //   email :string
 // }
-// /** Narrowing & Assertion */
+// /** 타입 확정하기 Narrowing & Assertion */
 // // narrowing : union type 등으로 type이 하나로 확정되지 않았을 경우 구체화 시켜주는 방법
 // // assertion : union type 등으로 type이 하나로 확정되지 않았을 경우 타입 덮어쓰기
 //Narrowing
@@ -110,6 +110,7 @@
 //   let array :number[] = [];
 //   array[0] = x as number;  //왼쪽에 잇는 변수를 as 이후 타입으로 덮어씀
 // }
+//숙제
 // function narrow1 (arr :(number|string)[]){
 //   let ans :number[] = [];
 //   arr.forEach((x)=>{
@@ -122,17 +123,40 @@
 //   return ans
 // }
 // console.log(narrow1([123, '3']))
-function narrow2(obj) {
-    let ans;
-    if (typeof obj.subject === 'string') {
-        ans = obj.subject;
-    }
-    else {
-        obj.subject.forEach((x) => {
-            ans = x;
-        });
-    }
-    return ans;
+// function narrow2 (obj :{subject : (string|string[])}){
+//   let ans : string;
+//   if (typeof obj.subject === 'string'){
+//     ans = obj.subject
+//   } else {
+//     obj.subject.forEach((x) => {
+//       ans = x
+//     })
+//   }
+//   return ans
+// }
+// console.log(narrow2( { subject : 'math' } ))  //이 경우 'math'를 return
+// console.log(narrow2( { subject : ['science', 'art', 'korean'] } )) //이 경우 'korean'을 return
+/* 타입도 변수에 담아쓰세요 type 키워드 써서 & readonly */
+// type Boyfriend = {
+//   readonly name :string, // object 내의 밸류도 변경할 수 없도록 해줌 (읽기전용!)
+// }
+// const ddony :Boyfriend = {
+//   name : 'JangDdoNy'
+// }
+// ddony.name = 'HyunJin'
+// console.log(ddony.name) //HyunJin 으로 변경되지만 터미널 상에 경고처리 해줌
+/** Literal Types로 만드는 const 변수 유사품 */
+let 장또니;
+function 또니(a) {
+    return '노이가아까움';
 }
-console.log(narrow2({ subject: 'math' })); //이 경우 'math'를 return
-console.log(narrow2({ subject: ['science', 'art', 'korean'] })); //이 경우 'korean'을 return
+function literal(x) {
+    return ['가위'];
+}
+var 자료 = {
+    name: 'kim'
+}; // as const를 붙여줘야 자료 object 안의 타입들이 다 잠김 
+function 함수(x) {
+}
+함수(자료.kim); //에러남 : 자료의 name의 타입이 'kim'이 아니라 'string'이기 때문
+// 내생각엔 자료라는 object 안의 name의 값이 얼마든지 바뀔 수 있어서 그런 것 같음
