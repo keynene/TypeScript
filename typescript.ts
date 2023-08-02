@@ -253,33 +253,33 @@
 // 회원정보2.changeName();
 
 //숙제2
-type cutType = (x :string) => string
-let cutZero :cutType = (x) => {
-  let ans :string;
-  let test :string = x.slice(0,1)
-  if (test === '0'){
-    ans = x.slice(1,(x.length-1))
-  } else {
-    ans = x
-  }
-  return ans
-}
-console.log(cutZero('101234'))
+// type cutType = (x :string) => string
+// let cutZero :cutType = (x) => {
+//   let ans :string;
+//   let test :string = x.slice(0,1)
+//   if (test === '0'){
+//     ans = x.slice(1,(x.length-1))
+//   } else {
+//     ans = x
+//   }
+//   return ans
+// }
+// console.log(cutZero('101234'))
 
-type removeType = (x :string) => number
-let removeDash :removeType = (x) => {
-  let ans :number = x.replace(/-/g,'')
-  return ans
-}
-console.log(removeDash('010-1234-5678'))
+// type removeType = (x :string) => number
+// let removeDash :removeType = (x) => {
+//   let ans :number = x.replace(/-/g,'')
+//   return ans
+// }
+// console.log(removeDash('010-1234-5678'))
 
-//숙제3
-type funcType1 = (x :string) => string;
-type funcType2 = (x :string) => number;
+// //숙제3
+// type funcType1 = (x :string) => string;
+// type funcType2 = (x :string) => number;
 
-function call(x :string, func1 :funcType1, func2 :funcType2){
-  console.log(func2(func1(x)))
-}
+// function call(x :string, func1 :funcType1, func2 :funcType2){
+//   console.log(func2(func1(x)))
+// }
 
 
-call('010-1111-2222', cutZero, removeDash)
+// call('010-1111-2222', cutZero, removeDash)
