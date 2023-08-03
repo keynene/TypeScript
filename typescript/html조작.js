@@ -1,4 +1,4 @@
-var 제목 = document.querySelector('#title');
+// let 제목 = document.querySelector('#title');
 // 제목.innerHTML = '반가워요'   //type이 Element일 수도 있고 null일수도 있기 때문에 에러남
 //'제목'이라는 변수를 narrowing 해주기
 //1. 널인지 검사
@@ -17,23 +17,41 @@ var 제목 = document.querySelector('#title');
 //   제목.innerHTML = '반갑소'
 // }
 //class가 link인 태그 href를 카카오로 변경하기
-var 링크 = document.querySelector('.link');
-if (링크 instanceof HTMLAnchorElement) {
-    링크.href = 'https://kakao.com';
-}
-//id가 button인 버튼에 클릭 시 효과 넣기
-var 버튼 = document.querySelector('#button');
-버튼 === null || 버튼 === void 0 ? void 0 : 버튼.addEventListener('click', function () {
+// let 링크 = document.querySelector('.link');
+// if (링크 instanceof HTMLAnchorElement){
+//   링크.href = 'https://kakao.com'
+// }
+// //id가 button인 버튼에 클릭 시 효과 넣기
+// let 버튼 = document.querySelector('#button');
+// 버튼?.addEventListener('click', function(){
+// })
+// //id가 image인 이미지 변경하기
+// let 이미지 = document.querySelector('#image');
+// if (이미지 instanceof HTMLImageElement){
+//   이미지.src = "new.jpg";
+// }
+// //class가 naver인 태그 전부 href 카카오로 변경하기
+// let 네이버 = document.querySelectorAll('.naver');
+// 네이버.forEach((a) => {
+//   if (a instanceof HTMLAnchorElement){
+//     a.href = 'https://kakao.com'
+//   }
+// })
+/* '타이틀' → 'keynene입니다' */
+var title = document.querySelector('#title');
+title.innerHTML = 'keynene입니다';
+/* '/' → 'https://velog.io/@keynene' */
+var link = document.querySelectorAll('.link');
+link.forEach(function (l) {
+    l.href = 'https://velog.io/@keynene';
 });
-//id가 image인 이미지 변경하기
-var 이미지 = document.querySelector('#image');
-if (이미지 instanceof HTMLImageElement) {
-    이미지.src = "new.jpg";
+/* 버튼 클릭 시 '안녕하세요 keynene 입니다^^' 경고창 */
+var button = document.getElementById('button');
+if (button instanceof HTMLButtonElement) {
+    button.addEventListener('click', function () {
+        alert('안녕하세요 keynene 입니다^^');
+    });
 }
-//class가 naver인 태그 전부 href 카카오로 변경하기
-var 네이버 = document.querySelectorAll('.naver');
-네이버.forEach(function (a) {
-    if (a instanceof HTMLAnchorElement) {
-        a.href = 'https://kakao.com';
-    }
-});
+console.log(title); //null
+console.log(link); //null
+console.log(button); //null
