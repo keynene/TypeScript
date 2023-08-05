@@ -299,38 +299,70 @@
 // let 선생 :Teacher = { name:'kim', age :20 }
 
 //숙제1
-interface Product {
-  brand :string,
-  serialNumber :number,
-  model :string[]
+// interface Product {
+//   brand :string,
+//   serialNumber :number,
+//   model :string[]
+// }
+
+// let 상품 :Product = { brand : 'Samsung', serialNumber : 1360, model : ['TV', 'phone'] }
+
+// //숙제2
+// interface Cart {
+//   product :string,
+//   price :number
+// }
+
+// let 장바구니 :Cart[] = [ { product : '청소기', price : 7000 }, { product : '삼다수', price : 800 } ]
+
+// //숙제3
+// interface NewCart extends Cart {
+//   card :boolean
+// }
+
+// //숙제4
+// interface MathObj {
+//   plus : (x :number, y :number) => number,
+//   minus : (x :number, y :number) => number
+// }
+
+// let oobj :MathObj = {
+//   plus(x,y){
+//     return x+y
+//   },
+//   minus(x,y){
+//     return x-y
+//   }
+// }
+
+
+
+
+
+/** 함수 rest 파라미터, destructuring 할 때 타입지정 */
+//rest parameter
+function 함수(...n :number[]){ //array 형태로 만들어지니까 type도 array형태로 넣어줘야 함
+  console.log(n) //[1,2,3,4,5]
 }
 
-let 상품 :Product = { brand : 'Samsung', serialNumber : 1360, model : ['TV', 'phone'] }
+함수(1,2,3,4,5)
 
-//숙제2
-interface Cart {
-  product :string,
-  price :number
+//spread operator
+let arr = [1,2,3]  //[1,2,3]
+let arr2 = [4,5]   //[4,5]
+let arr3 = [...arr, ...arr2]  //[1,2,3,4,5]
+let arr4 = [1,2,3, ...arr2]  //[1,2,3,4,5]
+
+//destructuring
+let person = { student : true, age : 20 }
+
+let studentValue = person.student
+let ageValue = person.age
+let { student, age } = { student :true, age : 20 }  //위의 studentvalue, ageValue와 같은 역할
+
+function 하암수({ student, age } : {student :boolean, age :number}){
+  console.log(student, age)
 }
+하암수(person)
 
-let 장바구니 :Cart[] = [ { product : '청소기', price : 7000 }, { product : '삼다수', price : 800 } ]
-
-//숙제3
-interface NewCart extends Cart {
-  card :boolean
-}
-
-//숙제4
-interface MathObj {
-  plus : (x :number, y :number) => number,
-  minus : (x :number, y :number) => number
-}
-
-let oobj :MathObj = {
-  plus(x,y){
-    return x+y
-  },
-  minus(x,y){
-    return x-y
-  }
-}
+let [a,b] = ['안녕', 100]
