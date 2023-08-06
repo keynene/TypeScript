@@ -284,3 +284,29 @@ function 하암수(_a) {
 }
 하암수(person);
 var _b = ['안녕', 100], a = _b[0], b = _b[1];
+//숙제1
+function 최댓값() {
+    var n = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        n[_i] = arguments[_i];
+    }
+    var mx = 0;
+    n.forEach(function (num) {
+        if (num > mx) {
+            mx = num;
+        }
+    });
+    return mx;
+}
+console.log(최댓값(6, 3, 7, 2));
+function 함수(_a) {
+    var user = _a.user, comment = _a.comment, admin = _a.admin;
+    console.log(user, comment, admin);
+}
+함수({ user: 'kim', comment: [3, 5, 4], admin: false });
+//숙제3
+function 함수(_a) {
+    var a = _a[0], b = _a[1], c = _a[2];
+    console.log(a, b, c);
+}
+함수([40, 'wine', false]);

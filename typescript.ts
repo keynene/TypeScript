@@ -366,3 +366,33 @@ function 하암수({ student, age } : {student :boolean, age :number}){
 하암수(person)
 
 let [a,b] = ['안녕', 100]
+
+//숙제1
+function 최댓값(...n : number[]) :number{
+  let mx :number = 0
+  n.forEach((num) => {
+    if (num > mx){
+      mx = num
+    }
+  })
+  return mx
+}
+
+console.log(최댓값(6,3,7,2))
+
+//숙제2
+interface Person {
+  user :string,
+  comment :number[],
+  admin :boolean
+}
+function 함수({user, comment, admin} :Person) :void{
+  console.log(user, comment, admin)
+}
+함수( { user : 'kim', comment : [3,5,4], admin : false } )
+
+//숙제3
+function 함수([a,b,c] :(number | string | boolean)[]) :void{
+  console.log(a,b,c)
+}
+함수( [40, 'wine', false] )
