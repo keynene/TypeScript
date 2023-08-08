@@ -2,15 +2,6 @@
 // let 이름 :string = 'noi'
 // let 나이 :number = 28
 // let 출생지역 :string = 'Changwon'
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 // let favorite :{songTitle : string, singer : string} = {songTitle : '눈물이 더 가까운 사람', singer : '이홍기'}
 // let project :{
 //   member :string[],
@@ -260,53 +251,57 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 // }
 /** 함수 rest 파라미터, destructuring 할 때 타입지정 */
 //rest parameter
-function 함수() {
-    var n = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        n[_i] = arguments[_i];
+// function 함수(...n :number[]){ //array 형태로 만들어지니까 type도 array형태로 넣어줘야 함
+//   console.log(n) //[1,2,3,4,5]
+// }
+// 함수(1,2,3,4,5)
+// //spread operator
+// let arr = [1,2,3]  //[1,2,3]
+// let arr2 = [4,5]   //[4,5]
+// let arr3 = [...arr, ...arr2]  //[1,2,3,4,5]
+// let arr4 = [1,2,3, ...arr2]  //[1,2,3,4,5]
+// //destructuring
+// let person = { student : true, age : 20 }
+// let studentValue = person.student
+// let ageValue = person.age
+// let { student, age } = { student :true, age : 20 }  //위의 studentvalue, ageValue와 같은 역할
+// function 하암수({ student, age } : {student :boolean, age :number}){
+//   console.log(student, age)
+// }
+// 하암수(person)
+// let [a,b] = ['안녕', 100]
+// //숙제1
+// function 최댓값(...n : number[]) :number{
+//   let mx :number = 0
+//   n.forEach((num) => {
+//     if (num > mx){
+//       mx = num
+//     }
+//   })
+//   return mx
+// }
+// console.log(최댓값(6,3,7,2))
+// //숙제2
+// interface Person {
+//   user :string,
+//   comment :number[],
+//   admin :boolean
+// }
+// function 함수({user, comment, admin} :Person) :void{
+//   console.log(user, comment, admin)
+// }
+// 함수( { user : 'kim', comment : [3,5,4], admin : false } )
+// //숙제3
+// function 함수([a,b,c] :(number | string | boolean)[]) :void{
+//   console.log(a,b,c)
+// }
+// 함수( [40, 'wine', false] )
+function restParameter(num) {
+    var x = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        x[_i - 1] = arguments[_i];
     }
-    console.log(n); //[1,2,3,4,5]
+    console.log(num);
+    console.log(x);
 }
-함수(1, 2, 3, 4, 5);
-//spread operator
-var arr = [1, 2, 3]; //[1,2,3]
-var arr2 = [4, 5]; //[4,5]
-var arr3 = __spreadArray(__spreadArray([], arr, true), arr2, true); //[1,2,3,4,5]
-var arr4 = __spreadArray([1, 2, 3], arr2, true); //[1,2,3,4,5]
-//destructuring
-var person = { student: true, age: 20 };
-var studentValue = person.student;
-var ageValue = person.age;
-var _a = { student: true, age: 20 }, student = _a.student, age = _a.age; //위의 studentvalue, ageValue와 같은 역할
-function 하암수(_a) {
-    var student = _a.student, age = _a.age;
-    console.log(student, age);
-}
-하암수(person);
-var _b = ['안녕', 100], a = _b[0], b = _b[1];
-//숙제1
-function 최댓값() {
-    var n = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        n[_i] = arguments[_i];
-    }
-    var mx = 0;
-    n.forEach(function (num) {
-        if (num > mx) {
-            mx = num;
-        }
-    });
-    return mx;
-}
-console.log(최댓값(6, 3, 7, 2));
-function 함수(_a) {
-    var user = _a.user, comment = _a.comment, admin = _a.admin;
-    console.log(user, comment, admin);
-}
-함수({ user: 'kim', comment: [3, 5, 4], admin: false });
-//숙제3
-function 함수(_a) {
-    var a = _a[0], b = _a[1], c = _a[2];
-    console.log(a, b, c);
-}
-함수([40, 'wine', false]);
+restParameter(1, 2, 3, 4, 5);

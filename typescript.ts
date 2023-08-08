@@ -341,58 +341,64 @@
 
 /** 함수 rest 파라미터, destructuring 할 때 타입지정 */
 //rest parameter
-function 함수(...n :number[]){ //array 형태로 만들어지니까 type도 array형태로 넣어줘야 함
-  console.log(n) //[1,2,3,4,5]
+// function 함수(...n :number[]){ //array 형태로 만들어지니까 type도 array형태로 넣어줘야 함
+//   console.log(n) //[1,2,3,4,5]
+// }
+
+// 함수(1,2,3,4,5)
+
+// //spread operator
+// let arr = [1,2,3]  //[1,2,3]
+// let arr2 = [4,5]   //[4,5]
+// let arr3 = [...arr, ...arr2]  //[1,2,3,4,5]
+// let arr4 = [1,2,3, ...arr2]  //[1,2,3,4,5]
+
+// //destructuring
+// let person = { student : true, age : 20 }
+
+// let studentValue = person.student
+// let ageValue = person.age
+// let { student, age } = { student :true, age : 20 }  //위의 studentvalue, ageValue와 같은 역할
+
+// function 하암수({ student, age } : {student :boolean, age :number}){
+//   console.log(student, age)
+// }
+// 하암수(person)
+
+// let [a,b] = ['안녕', 100]
+
+// //숙제1
+// function 최댓값(...n : number[]) :number{
+//   let mx :number = 0
+//   n.forEach((num) => {
+//     if (num > mx){
+//       mx = num
+//     }
+//   })
+//   return mx
+// }
+
+// console.log(최댓값(6,3,7,2))
+
+// //숙제2
+// interface Person {
+//   user :string,
+//   comment :number[],
+//   admin :boolean
+// }
+// function 함수({user, comment, admin} :Person) :void{
+//   console.log(user, comment, admin)
+// }
+// 함수( { user : 'kim', comment : [3,5,4], admin : false } )
+
+// //숙제3
+// function 함수([a,b,c] :(number | string | boolean)[]) :void{
+//   console.log(a,b,c)
+// }
+// 함수( [40, 'wine', false] )
+
+function restParameter(num, ...x){
+  console.log(num)
+  console.log(x)
 }
-
-함수(1,2,3,4,5)
-
-//spread operator
-let arr = [1,2,3]  //[1,2,3]
-let arr2 = [4,5]   //[4,5]
-let arr3 = [...arr, ...arr2]  //[1,2,3,4,5]
-let arr4 = [1,2,3, ...arr2]  //[1,2,3,4,5]
-
-//destructuring
-let person = { student : true, age : 20 }
-
-let studentValue = person.student
-let ageValue = person.age
-let { student, age } = { student :true, age : 20 }  //위의 studentvalue, ageValue와 같은 역할
-
-function 하암수({ student, age } : {student :boolean, age :number}){
-  console.log(student, age)
-}
-하암수(person)
-
-let [a,b] = ['안녕', 100]
-
-//숙제1
-function 최댓값(...n : number[]) :number{
-  let mx :number = 0
-  n.forEach((num) => {
-    if (num > mx){
-      mx = num
-    }
-  })
-  return mx
-}
-
-console.log(최댓값(6,3,7,2))
-
-//숙제2
-interface Person {
-  user :string,
-  comment :number[],
-  admin :boolean
-}
-function 함수({user, comment, admin} :Person) :void{
-  console.log(user, comment, admin)
-}
-함수( { user : 'kim', comment : [3,5,4], admin : false } )
-
-//숙제3
-function 함수([a,b,c] :(number | string | boolean)[]) :void{
-  console.log(a,b,c)
-}
-함수( [40, 'wine', false] )
+restParameter(1,2,3,4,5);
