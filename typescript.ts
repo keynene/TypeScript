@@ -397,8 +397,41 @@
 // }
 // 함수( [40, 'wine', false] )
 
-function restParameter(num, ...x){
-  console.log(num)
-  console.log(x)
+// function restParameter(num, ...x){
+//   console.log(num)
+//   console.log(x)
+// }
+// restParameter(1,2,3,4,5);
+
+
+
+
+
+/** Narrowing 할 수 있는 방법 더 알아보기 */
+//1. union type의 각 타입이 같은 경우 (둘 다 object) : in 연산자로 속성으로 타입검사
+type Fish = { swim :string }
+type Bird = { fly :string }
+
+function 함수(animal :Fish | Bird){
+  if ( 'swim' in animal ){
+    animal.swim
+  }
 }
-restParameter(1,2,3,4,5);
+
+//2. union type의 각 타입이 같고 속성까지 같은경우 : literal type이 필요
+type Car = {
+  wheel :'4개',  //literal type
+  color :string
+}
+type Bike = {
+  wheel :'2개',
+  color :string
+}
+
+function 함수2(x :Car | Bike){
+  if (x.wheel === '4개'){
+    console.log('Car임')
+  } else {
+    console.log('Bike임')
+  }
+}
