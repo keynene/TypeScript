@@ -408,30 +408,68 @@
 
 
 /** Narrowing 할 수 있는 방법 더 알아보기 */
-//1. union type의 각 타입이 같은 경우 (둘 다 object) : in 연산자로 속성으로 타입검사
-type Fish = { swim :string }
-type Bird = { fly :string }
+// //1. union type의 각 타입이 같은 경우 (둘 다 object) : in 연산자로 속성으로 타입검사
+// type Fish = { swim :string }
+// type Bird = { fly :string }
 
-function 함수(animal :Fish | Bird){
-  if ( 'swim' in animal ){
-    animal.swim
+// function 함수(animal :Fish | Bird){
+//   if ( 'swim' in animal ){
+//     animal.swim
+//   }
+// }
+
+// //2. union type의 각 타입이 같고 속성까지 같은경우 : literal type이 필요
+// type Car = {
+//   wheel :'4개',  //literal type
+//   color :string
+// }
+// type Bike = {
+//   wheel :'2개',
+//   color :string
+// }
+
+// function 함수2(x :Car | Bike){
+//   if (x.wheel === '4개'){
+//     console.log('Car임')
+//   } else {
+//     console.log('Bike임')
+//   }
+// }
+
+
+
+
+/** class에서 사용가능한 protected, static 키워드 */
+// private : class안에서만 사용 가능, 자식에게 안물려줌
+// protected : class안에서만 사용 가능, 자식들도 사용가능 (clas 끼리 속성 공유하고 싶을 때)
+class User  {
+  protected x = 10;
+}
+
+class NewUser extends User {
+  doThis(){
+    this.x = 20;
   }
 }
 
-//2. union type의 각 타입이 같고 속성까지 같은경우 : literal type이 필요
-type Car = {
-  wheel :'4개',  //literal type
-  color :string
-}
-type Bike = {
-  wheel :'2개',
-  color :string
+
+//static을 쓰지않으면 부모로 부터 생성된 자식들만 사용가능함
+class TestUser {
+  x = 10;
+  y = 10;
 }
 
-function 함수2(x :Car | Bike){
-  if (x.wheel === '4개'){
-    console.log('Car임')
-  } else {
-    console.log('Bike임')
-  }
+let john = new TestUser();
+john.x //가능
+User.x //불가능
+
+
+//static을 쓰면 자식이 직접 사용 불가능, 부모클래스에서 사용가능
+class StaticUser {
+  static x = 10;
+  y = 20;
 }
+
+let alice = new StaticUser();
+alice.x //불가능
+StaticUser.x //가능
