@@ -439,37 +439,62 @@
 
 
 
+
+
 /** class에서 사용가능한 protected, static 키워드 */
-// private : class안에서만 사용 가능, 자식에게 안물려줌
-// protected : class안에서만 사용 가능, 자식들도 사용가능 (clas 끼리 속성 공유하고 싶을 때)
-class User  {
-  protected x = 10;
-}
+// // private : class안에서만 사용 가능, 자식에게 안물려줌
+// // protected : class안에서만 사용 가능, 자식들도 사용가능 (clas 끼리 속성 공유하고 싶을 때)
+// class User  {
+//   protected x = 10;
+// }
 
-class NewUser extends User {
-  doThis(){
-    this.x = 20;
-  }
-}
-
-
-//static을 쓰지않으면 부모로 부터 생성된 자식들만 사용가능함
-class TestUser {
-  x = 10;
-  y = 10;
-}
-
-let john = new TestUser();
-john.x //가능
-User.x //불가능
+// class NewUser extends User {
+//   doThis(){
+//     this.x = 20;
+//   }
+// }
 
 
-//static을 쓰면 자식이 직접 사용 불가능, 부모클래스에서 사용가능
-class StaticUser {
-  static x = 10;
-  y = 20;
-}
+// //static을 쓰지않으면 부모로 부터 생성된 자식들만 사용가능함
+// class TestUser {
+//   x = 10;
+//   y = 10;
+// }
 
-let alice = new StaticUser();
-alice.x //불가능
-StaticUser.x //가능
+// let john = new TestUser();
+// john.x //가능
+// User.x //불가능
+
+
+// //static을 쓰면 자식이 직접 사용 불가능, 부모클래스에서 사용가능
+// class StaticUser {
+//   static x = 10;
+//   y = 20;
+// }
+
+// let alice = new StaticUser();
+// alice.x //불가능
+// StaticUser.x //가능
+
+//숙제1
+// class User {
+//   private static x = 10;
+//   public static y = 20;
+//   protected z = 30;
+// }
+
+
+
+
+
+/** 타입도 import export 해서 씁니다 그리고 namespace */
+//a.ts의 타입 b.ts로 가져오기
+// //a.ts
+// export type Name = string | boolean;
+// export type Age = (a :number) => number;
+
+// //b.ts
+// import {Name, Age} from './a'
+// let 이름 :Name = 'kim'
+// let 함수 :Age = (a) => a + 10
+
