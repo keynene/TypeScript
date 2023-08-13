@@ -498,3 +498,30 @@
 // let 이름 :Name = 'kim'
 // let 함수 :Age = (a) => a + 10
 
+//namespace : 같은 이름의 타입을 쓰기 위해 만들어짐
+//a.ts의 타입 b.ts에 가져오기
+// //a.ts
+// namespace MyNamespace {
+//   export interface PersonInterface { age :number };
+//   export type NameType =  number | string;
+// }
+
+// //b.ts
+// /// <reference path="./a.ts" />   //슬래쉬 3개임
+// let 이름 :MyNamespace.NameType = '민수';
+// let 나이 :MyNamespace.PersonInterface = { age :10 };
+
+
+//숙제3
+namespace Dog1 {
+  export type Dog = string;
+}
+
+namespace Dog2 {
+  export interface Dog {
+    name :string
+  }
+}
+
+let dog1 :Dog1.Dog = 'bark';
+let dog2 :Dog2.Dog = { name :'paw' };
