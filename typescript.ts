@@ -511,17 +511,29 @@
 // let 이름 :MyNamespace.NameType = '민수';
 // let 나이 :MyNamespace.PersonInterface = { age :10 };
 
-
 //숙제3
-namespace Dog1 {
-  export type Dog = string;
-}
+// namespace Dog1 {
+//   export type Dog = string;
+// }
 
-namespace Dog2 {
-  export interface Dog {
-    name :string
-  }
-}
+// namespace Dog2 {
+//   export interface Dog {
+//     name :string
+//   }
+// }
 
-let dog1 :Dog1.Dog = 'bark';
-let dog2 :Dog2.Dog = { name :'paw' };
+// let dog1 :Dog1.Dog = 'bark';
+// let dog2 :Dog2.Dog = { name :'paw' };
+
+
+
+
+
+
+/** React + TypeScript 사용할 때 알아야할 점 */
+//import React 후 .tsx파일에서 구현가능
+let 박스 :JSX.Element = <div></div>
+let 버튼 :JSX.Element = <button></button>
+const [user, setUser] = useState<string | null>('kim');
+
+
