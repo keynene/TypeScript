@@ -531,9 +531,21 @@
 
 
 /** React + TypeScript 사용할 때 알아야할 점 */
-//import React 후 .tsx파일에서 구현가능
-let 박스 :JSX.Element = <div></div>
-let 버튼 :JSX.Element = <button></button>
-const [user, setUser] = useState<string | null>('kim');
+// //import React 후 .tsx파일에서 구현가능
+// let 박스 :JSX.Element = <div></div>
+// let 버튼 :JSX.Element = <button></button>
+// const [user, setUser] = useState<string | null>('kim');
 
+
+
+
+
+/** React + TypeScript 사용할 때 알아야할 점 2 : Redux toolkit */
+//1. state 타입 지정
+//2. reducer안의 action 파라미터 타입지정  (reducers: { 함수명(state, action : 타입){ 실행코드 } })
+
+//action 타입지정
+(생략)
+//reducers 안
+incrementByAmount (state, action: PayloadAction<number>){ 실행코드 }
 
