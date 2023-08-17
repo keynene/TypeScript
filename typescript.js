@@ -2,6 +2,15 @@
 // let 이름 :string = 'noi'
 // let 나이 :number = 28
 // let 출생지역 :string = 'Changwon'
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 // let favorite :{songTitle : string, singer : string} = {songTitle : '눈물이 더 가까운 사람', singer : '이홍기'}
 // let project :{
 //   member :string[],
@@ -396,12 +405,52 @@
 // let 버튼 :JSX.Element = <button></button>
 // const [user, setUser] = useState<string | null>('kim');
 /** React + TypeScript 사용할 때 알아야할 점 2 : Redux toolkit */
-//1. state 타입 지정
-//2. reducer안의 action 파라미터 타입지정  (reducers: { 함수명(state, action : 타입){ 실행코드 } })
-//action 타입지정
-(생략);
-//reducers 안
-incrementByAmount(state, action, (PayloadAction));
-{
-    실행코드;
+// 1. state 타입 지정
+// 2. reducer안의 action 파라미터 타입지정  (reducers: { 함수명(state, action : 타입){ 실행코드 } })
+// action 타입지정
+// (생략)
+// //reducers 안
+// incrementByAmount (state, action: PayloadAction<number>){ 실행코드 }
+/** array 자료에 붙일 수 있는 tuple type */
+//array에 들어오는 자료 순서에 따른 타입지정 가능
+var 멍멍이;
+멍멍이 = ['dog', true];
+//rest parameter 사용가능
+function 함수() {
+    var x = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        x[_i] = arguments[_i];
+    }
+    console.log(x);
+}
+함수('kim', 123); //가능
+함수('kim', 123, 456); //에러
+함수('kim', 'park'); // 에러
+//spread 타입지정
+var arr = [1, 2, 3];
+var arr2 = __spreadArray(__spreadArray([], arr, true), [4, 5], false); //spread는 arr로 묶어주니까 arr 타입지정하듯이 하고 ... 붙여야함
+//숙제1
+var food = ['오리불고기', 25000, true];
+var arr3 = ['동서녹차', 4000, true, false, true, true, false, true];
+function 함수3() {
+    var rest = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        rest[_i] = arguments[_i];
+    }
+}
+function numOrStr() {
+    var nors = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        nors[_i] = arguments[_i];
+    }
+    var ans = [[], []];
+    nors.forEach(function (n) {
+        if (typeof n === 'string') {
+            ans[0].push(n);
+        }
+        else if (typeof n === 'number') {
+            ans[1].push(n);
+        }
+    });
+    return ans;
 }

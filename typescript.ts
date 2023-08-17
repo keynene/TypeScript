@@ -541,11 +541,67 @@
 
 
 /** React + TypeScript 사용할 때 알아야할 점 2 : Redux toolkit */
-//1. state 타입 지정
-//2. reducer안의 action 파라미터 타입지정  (reducers: { 함수명(state, action : 타입){ 실행코드 } })
+// 1. state 타입 지정
+// 2. reducer안의 action 파라미터 타입지정  (reducers: { 함수명(state, action : 타입){ 실행코드 } })
 
-//action 타입지정
-(생략)
-//reducers 안
-incrementByAmount (state, action: PayloadAction<number>){ 실행코드 }
+// action 타입지정
+// (생략)
+// //reducers 안
+// incrementByAmount (state, action: PayloadAction<number>){ 실행코드 }
 
+
+
+
+
+
+/** array 자료에 붙일 수 있는 tuple type */
+//array에 들어오는 자료 순서에 따른 타입지정 가능
+let 멍멍이 :[string, boolean];
+멍멍이 = ['dog', true]
+
+//rest parameter 사용가능
+function 함수(...x :[string, number]){
+  console.log(x)
+}
+함수('kim', 123) //가능
+함수('kim', 123, 456) //에러
+함수('kim', 'park') // 에러
+
+//typle 안 옵션
+type Num = [number, number?, number?] // 가능
+type Number = [number, number?, number] // 불가능 : 무조건 ?(옵션)은 마지막부터 사용가능
+
+//spread 타입지정
+let arr = [1,2,3]
+let arr2 :[...number[], number, number] = [...arr,4,5] //spread는 arr로 묶어주니까 arr 타입지정하듯이 하고 ... 붙여야함
+
+//숙제1
+let food :[string, number, boolean] = ['오리불고기', 25000, true]
+
+//숙제2
+type Arr = [string, number, ...boolean[]]
+let arr3 : Arr = ['동서녹차', 4000, true, false, true, true, false, true]
+
+//숙제3
+type Rest = [string, boolean, ...(number | string)[]]
+function 함수3(...rest :Rest){
+
+}
+
+//숙제4
+type NOrS = (string | number)[]
+function numOrStr(...nors :NOrS){
+
+  let ans :[string[], number[]] = [[],[]]
+  
+  nors.forEach((n)=>{
+    if (typeof n === 'string'){
+      ans[0].push(n)
+    }
+    else if (typeof n === 'number'){
+      ans[1].push(n)
+    }
+  })
+
+  return ans
+}
