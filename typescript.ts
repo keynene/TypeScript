@@ -555,53 +555,73 @@
 
 
 /** array 자료에 붙일 수 있는 tuple type */
-//array에 들어오는 자료 순서에 따른 타입지정 가능
-let 멍멍이 :[string, boolean];
-멍멍이 = ['dog', true]
+// //array에 들어오는 자료 순서에 따른 타입지정 가능
+// let 멍멍이 :[string, boolean];
+// 멍멍이 = ['dog', true]
 
-//rest parameter 사용가능
-function 함수(...x :[string, number]){
-  console.log(x)
-}
-함수('kim', 123) //가능
-함수('kim', 123, 456) //에러
-함수('kim', 'park') // 에러
+// //rest parameter 사용가능
+// function 함수(...x :[string, number]){
+//   console.log(x)
+// }
+// 함수('kim', 123) //가능
+// 함수('kim', 123, 456) //에러
+// 함수('kim', 'park') // 에러
 
-//typle 안 옵션
-type Num = [number, number?, number?] // 가능
-type Number = [number, number?, number] // 불가능 : 무조건 ?(옵션)은 마지막부터 사용가능
+// //typle 안 옵션
+// type Num = [number, number?, number?] // 가능
+// type Number = [number, number?, number] // 불가능 : 무조건 ?(옵션)은 마지막부터 사용가능
 
-//spread 타입지정
-let arr = [1,2,3]
-let arr2 :[...number[], number, number] = [...arr,4,5] //spread는 arr로 묶어주니까 arr 타입지정하듯이 하고 ... 붙여야함
+// //spread 타입지정
+// let arr = [1,2,3]
+// let arr2 :[...number[], number, number] = [...arr,4,5] //spread는 arr로 묶어주니까 arr 타입지정하듯이 하고 ... 붙여야함
 
-//숙제1
-let food :[string, number, boolean] = ['오리불고기', 25000, true]
+// //숙제1
+// let food :[string, number, boolean] = ['오리불고기', 25000, true]
 
-//숙제2
-type Arr = [string, number, ...boolean[]]
-let arr3 : Arr = ['동서녹차', 4000, true, false, true, true, false, true]
+// //숙제2
+// type Arr = [string, number, ...boolean[]]
+// let arr3 : Arr = ['동서녹차', 4000, true, false, true, true, false, true]
 
-//숙제3
-type Rest = [string, boolean, ...(number | string)[]]
-function 함수3(...rest :Rest){
+// //숙제3
+// type Rest = [string, boolean, ...(number | string)[]]
+// function 함수3(...rest :Rest){
 
-}
+// }
 
-//숙제4
-type NOrS = (string | number)[]
-function numOrStr(...nors :NOrS){
+// //숙제4
+// type NOrS = (string | number)[]
+// function numOrStr(...nors :NOrS){
 
-  let ans :[string[], number[]] = [[],[]]
-  
-  nors.forEach((n)=>{
-    if (typeof n === 'string'){
-      ans[0].push(n)
-    }
-    else if (typeof n === 'number'){
-      ans[1].push(n)
-    }
-  })
+//   let ans :[string[], number[]] = [[],[]]
 
-  return ans
-}
+//   nors.forEach((n)=>{
+//     if (typeof n === 'string'){
+//       ans[0].push(n)
+//     }
+//     else if (typeof n === 'number'){
+//       ans[1].push(n)
+//     }
+//   })
+
+//   return ans
+// }
+
+
+
+
+
+/** 외부 파일 이용시 declare & 이상한 특징인 ambient module */
+//.js파일에 있는 변수 .ts파일에서 갖다 쓰기
+
+//data.js
+var a = 10;
+var b = { name :'kim' };
+
+//index.ts
+console.log(a+1) //에러남
+
+//index.ts
+declare let a :number; //재정의 해주면
+console.log(a+1) //에러안남 
+
+//.ts끼리는 "ambient module"이라고 해서 모든 변수들이 global임
